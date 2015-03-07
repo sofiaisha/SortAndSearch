@@ -12,11 +12,12 @@ public class Sort<T> {
 	
 	private static <T> void insert(List<T> list, int index, T element) {
 		int position = index-1;
-		// For each element, start from its original position
+		// For each element, start from its original position, move larger neighbors to the right
 		while ( (position>=0) && ( ((Comparable<T>)list.get(position)).compareTo(element) > 0) ) {
 			list.set(position+1, list.get(position));
 			position--;
 		}
+		// Put the element to the right of its first smaller neighbor
 		list.set(position+1, element);
 	}
 }

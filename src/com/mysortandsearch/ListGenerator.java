@@ -11,12 +11,11 @@ public class ListGenerator {
 		this.rand = new Random(System.currentTimeMillis());
 	}
 	
-	public ArrayList<Integer> build (int count) {
+	public ArrayList<Integer> build (int count, int maxValue) {
 		ArrayList<Integer> list = new ArrayList<Integer>();
 		for (int i=0;i<count;i++) {
-			list.add(rand.nextInt(10*count));
+			list.add(rand.nextInt(maxValue+1));
 		}
 		return list;
 	}
-
 }

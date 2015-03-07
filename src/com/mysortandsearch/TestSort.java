@@ -19,7 +19,7 @@ public class TestSort {
 
 	@Test
 	public void testInsertion() {
-		list = lg.build(10);
+		list = lg.build(10, 100);
 		Sort.insertionSort(list);
 		for (int i=0;i<list.size()-1;i++) {
 			assertTrue(list.get(i) <= list.get(i+1));
