@@ -30,7 +30,14 @@ public class TestSort {
 		list = lg.build(10, 100);
 		Sort.bubbleSort(list);
 		assertTrue(Sort.isSorted(list));
-
+		list = null;
+	}
+	
+	@Test
+	public void testSelection() {
+		list = lg.build(10, 100);
+		Sort.selectionSort(list);
+		assertTrue(Sort.isSorted(list));
 		list = null;
 	}
 }
