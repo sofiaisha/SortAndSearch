@@ -1,0 +1,16 @@
+# SortAndSearch
+
+Various sort and search algorithms for generic lists, implemented in Java.
+
+<code>ListGenerator</code>: utility class to generate random lists of Integers.
+
+<code>Sort\<T></code>
+- <code>static \<T> void insertionSort(List\<T> list)</code> : insertion sort
+- more to come
+
+<code>Search\<T></code>
+- TBD
+
+<code>TestXXX</code>: unit tests for class XXX.
+
+Reference: "Algorithms in a nutshell", O'Reilly, 2009.
