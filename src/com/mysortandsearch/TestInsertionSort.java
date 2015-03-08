@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-public class TestSort {
+public class TestInsertionSort {
 
 	private static ListGenerator lg;
 	private ArrayList<Integer> list;
@@ -20,23 +20,7 @@ public class TestSort {
 	@Test
 	public void testInsertion() {
 		list = lg.build(10, 100);
-		Sort.insertionSort(list);
-		assertTrue(Sort.isSorted(list));
-		list = null;
-	}
-	
-	@Test
-	public void testBubble() {
-		list = lg.build(10, 100);
-		Sort.bubbleSort(list);
-		assertTrue(Sort.isSorted(list));
-		list = null;
-	}
-	
-	@Test
-	public void testSelection() {
-		list = lg.build(10, 100);
-		Sort.selectionSort(list);
+		InsertionSort.insertionSort(list);
 		assertTrue(Sort.isSorted(list));
 		list = null;
 	}
