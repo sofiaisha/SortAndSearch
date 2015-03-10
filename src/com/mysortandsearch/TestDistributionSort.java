@@ -19,7 +19,7 @@ public class TestDistributionSort {
 	
 	@Test
 	public void testCount() {
-		ArrayList<com.mysortandsearch.MyInteger> listMyInts = lg.buildMyIntegerList(1000, 100);
+		ArrayList<com.mysortandsearch.MyInteger> listMyInts = lg.buildMyIntegerList(100000, 100);
 		List<MyInteger> newlistMyInts = DistributionSort.countSort(listMyInts, 100);
 		assertTrue(Sort.isSorted(newlistMyInts));
 	}

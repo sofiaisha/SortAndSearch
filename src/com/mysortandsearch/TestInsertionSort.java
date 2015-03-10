@@ -19,7 +19,7 @@ public class TestInsertionSort {
 
 	@Test
 	public void testInsertion() {
-		list = lg.build(10, 100);
+		list = lg.build(10000, 100000);
 		InsertionSort.insertionSort(list);
 		assertTrue(Sort.isSorted(list));
 		list = null;
