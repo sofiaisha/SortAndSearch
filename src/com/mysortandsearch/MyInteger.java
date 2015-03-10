@@ -1,6 +1,6 @@
 package com.mysortandsearch;
 
-public class MyInteger implements HasAnIntegerKey, Comparable<Object> {
+public class MyInteger implements HasAnIntegerKey, Comparable<MyInteger> {
 
 	private Integer i;
 	
@@ -12,8 +12,7 @@ public class MyInteger implements HasAnIntegerKey, Comparable<Object> {
 		return ""+i;
 	}
 	
-	public boolean equals(Object o) {
-		MyInteger myInt = (MyInteger)o;
+	public boolean equals(MyInteger myInt) {
 		return (this.i == myInt.i);
 	}
 	
@@ -23,8 +22,7 @@ public class MyInteger implements HasAnIntegerKey, Comparable<Object> {
 	}
 
 	@Override
-	public int compareTo(Object o) {
-		MyInteger myInt = (MyInteger)o;
+	public int compareTo(MyInteger myInt) {
 		if (this.i == myInt.i) return 0;
 		if (this.i > myInt.i) return 1;
 		else return -1;
