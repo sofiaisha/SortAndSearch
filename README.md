@@ -7,6 +7,7 @@ Various sort and search algorithms for generic lists, implemented in Java.
   * <code>static \<T> void insertionSort(List\<T> list)</code>
 - Exchange sorts
   * <code>static \<T> void bubbleSort(List\<T> list)</code>
+  * <code>static \<T> void quickSort(List\<T> list)</code>
 - Selection sorts
   * <code>static \<T> void selectionSort(List\<T> list)</code>
 - Distribution sorts

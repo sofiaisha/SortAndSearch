@@ -24,5 +24,47 @@ public class ExchangeSort {
 			}
 		} while (swap);
 	}
-
+	
+	//
+	// Quicksort
+	// Best case o(n log n), median case o(n log n), worst case o(n^2)
+	//
+	public static <T> void quickSort(List<T> list) {
+		quickSortInternal(list, 0, list.size()-1);
+	}
+	
+	private static <T> void quickSortInternal(List<T> list, int left, int right) {
+		if (left < right) {
+			int index = partition(list, left, right);
+			quickSortInternal(list, left, index-1);
+			quickSortInternal(list, index+1, right);
+		}
+	}
+	
+	@SuppressWarnings("unchecked")
+	private static <T> int partition(List<T> list, int left, int right) {
+		int pivot = left;
+		swap(list, pivot, right);
+		
+		int store = left;
+		for (int i=left;i<=right-1;i++) {
+			T currentElem = list.get(i);
+			T rightElem = list.get(right);
+			if ( ((Comparable<T>)currentElem).compareTo(rightElem) <= 0 ) {
+				swap(list, i, store);
+				store++;
+			}
+		}
+		swap(list, store, right);
+		return store;
+	}
+	
+	private static <T> void swap(List<T> list, int i, int j) {
+		T tmp = list.get(i);
+		list.set(i, list.get(j));
+		list.set(j, tmp);
+	}
+	
+	
+	
 }
