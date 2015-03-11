@@ -1,4 +1,4 @@
-package com.mysortandsearch;
+package com.mysortandsearch.test;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,6 +6,11 @@ import java.util.List;
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
+
+import com.mysortandsearch.DistributionSort;
+import com.mysortandsearch.utils.ListGenerator;
+import com.mysortandsearch.utils.MyInteger;
+import com.mysortandsearch.utils.Sort;
 
 public class TestDistributionSort {
 
@@ -18,11 +23,20 @@ public class TestDistributionSort {
 
 	@Test
 	public void testCount() {
-		ArrayList<com.mysortandsearch.MyInteger> listMyInts = TestDistributionSort.lg
+		ArrayList<MyInteger> listMyInts = TestDistributionSort.lg
 				.buildMyIntegerList(100000, 100);
 		List<MyInteger> newlistMyInts = DistributionSort.countSort(listMyInts,
 				100);
 		Assert.assertTrue(Sort.isSorted(newlistMyInts));
+	}
+
+	@Test
+	public void testBucket() {
+		ArrayList<MyInteger> listMyInts = TestDistributionSort.lg
+				.buildMyIntegerList(50, 10);
+		DistributionSort.bucketSort(listMyInts, 100000, 100);
+		Assert.assertTrue(Sort.isSorted(listMyInts));
+
 	}
 
 }

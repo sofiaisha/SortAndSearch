@@ -1,4 +1,4 @@
-package com.mysortandsearch;
+package com.mysortandsearch.utils;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -7,7 +7,7 @@ public class ListGenerator {
 
 	private final Random rand;
 
-	ListGenerator() {
+	public ListGenerator() {
 		rand = new Random(System.currentTimeMillis());
 	}
 

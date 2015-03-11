@@ -1,4 +1,4 @@
-package com.mysortandsearch;
+package com.mysortandsearch.utils;
 
 public class MyInteger implements HasAnIntegerKey, Comparable<MyInteger> {
 
