@@ -2,7 +2,7 @@ package com.mysortandsearch;
 
 public class MyInteger implements HasAnIntegerKey, Comparable<MyInteger> {
 
-	private Integer i;
+	private int i;
 	
 	MyInteger(int i) {
 		this.i = i;
@@ -12,8 +12,13 @@ public class MyInteger implements HasAnIntegerKey, Comparable<MyInteger> {
 		return ""+i;
 	}
 	
-	public boolean equals(MyInteger myInt) {
-		return (this.i == myInt.i);
+	public boolean equals(Object myInt) {
+		if (myInt == null) return false;
+		return (this.i == ((MyInteger)myInt).i);
+	}
+	
+	public int hashCode() {
+		return i;
 	}
 	
 	@Override
