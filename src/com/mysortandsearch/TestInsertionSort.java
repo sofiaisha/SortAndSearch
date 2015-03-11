@@ -1,9 +1,8 @@
 package com.mysortandsearch;
 
-import static org.junit.Assert.*;
-
 import java.util.ArrayList;
 
+import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -11,17 +10,17 @@ public class TestInsertionSort {
 
 	private static ListGenerator lg;
 	private ArrayList<Integer> list;
-	
+
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
-		lg = new ListGenerator();
+		TestInsertionSort.lg = new ListGenerator();
 	}
 
 	@Test
 	public void testInsertion() {
-		list = lg.build(10000, 100000);
+		list = TestInsertionSort.lg.build(10000, 100000);
 		InsertionSort.insertionSort(list);
-		assertTrue(Sort.isSorted(list));
+		Assert.assertTrue(Sort.isSorted(list));
 		list = null;
 	}
 }
