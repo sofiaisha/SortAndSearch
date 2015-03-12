@@ -4,7 +4,7 @@ public class MyInteger implements HasAnIntegerKey, Comparable<MyInteger> {
 
 	private final int i;
 
-	MyInteger(int i) {
+	protected MyInteger(int i) {
 		this.i = i;
 	}
 

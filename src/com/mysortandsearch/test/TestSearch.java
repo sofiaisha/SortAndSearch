@@ -25,7 +25,7 @@ public class TestSearch {
 
 	@Test
 	public void testLinearSearch() {
-		list = lg.build(10000, 100000);
+		list = lg.build(1000, 1000);
 		
 		assertFalse(LinearSearch.linearSearch(null, 100));
 		assertFalse(LinearSearch.linearSearch(list, null));
@@ -68,7 +68,7 @@ public class TestSearch {
 	
 	@Test
 	public void testBinarySearchRecursive() {
-		list = lg.build(10000, 100000);
+		list = lg.build(1000, 1000);
 		ExchangeSort.quickSort(list);
 				
 		assertFalse(BinarySearch.binarySearchRecursive(null, 100));

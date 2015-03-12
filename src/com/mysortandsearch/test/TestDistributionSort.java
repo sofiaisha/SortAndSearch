@@ -8,9 +8,20 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import com.mysortandsearch.DistributionSort;
+import com.mysortandsearch.utils.HasAnIntegerKey;
 import com.mysortandsearch.utils.ListGenerator;
 import com.mysortandsearch.utils.MyInteger;
 import com.mysortandsearch.utils.Sort;
+
+
+class Dummy extends MyInteger implements HasAnIntegerKey {
+	private String s;
+
+	Dummy(int i, String s) {
+		super(i);
+		this.s = s;
+	}
+}
 
 public class TestDistributionSort {
 
@@ -23,11 +34,23 @@ public class TestDistributionSort {
 
 	@Test
 	public void testCount() {
-		ArrayList<MyInteger> listMyInts = TestDistributionSort.lg
-				.buildMyIntegerList(100000, 100);
-		List<MyInteger> newlistMyInts = DistributionSort.countSort(listMyInts,
+		List<HasAnIntegerKey> listMyInts = TestDistributionSort.lg
+				.buildMyIntegerList2(100000, 100);
+		List<HasAnIntegerKey> newlistMyInts = DistributionSort.countSort(listMyInts,
 				100);
 		Assert.assertTrue(Sort.isSorted(newlistMyInts));
+	}
+	
+	@Test
+	public void testCountDummy() {
+		List<Dummy> listDummies = new ArrayList<Dummy>();
+		listDummies.add(new Dummy(5, "Five"));
+		listDummies.add(new Dummy(1, "One"));
+		listDummies.add(new Dummy(3, "Three"));
+		listDummies.add(new Dummy(4, "Four"));
+		listDummies.add(new Dummy(2, "Two"));
+		List<Dummy> newlistDummies = DistributionSort.countSort(listDummies,100);
+		Assert.assertTrue(Sort.isSorted(newlistDummies));
 	}
 
 	@Test
@@ -38,5 +61,4 @@ public class TestDistributionSort {
 		Assert.assertTrue(Sort.isSorted(listMyInts));
 
 	}
-
 }

@@ -26,4 +26,12 @@ public class ListGenerator {
 		}
 		return list;
 	}
+	
+	public ArrayList<HasAnIntegerKey> buildMyIntegerList2(int count, int maxValue) {
+		ArrayList<HasAnIntegerKey> list = new ArrayList<HasAnIntegerKey>();
+		for (int i = 0; i < count; i++) {
+			list.add(new MyInteger(rand.nextInt(maxValue + 1)));
+		}
+		return list;
+	}
 }
