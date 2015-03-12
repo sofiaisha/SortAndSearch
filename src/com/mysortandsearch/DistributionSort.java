@@ -27,7 +27,7 @@ public class DistributionSort<T extends HasAnIntegerKey> {
 		int total = 0;
 		for (int i = 0; i <= maxValue; i++) {
 			int counter = counters[i];
-			counters[i] = total;
+			counters[i] = total; 
 			total += counter;
 		}
 		// Walk through the list, build a new list and put each element at the

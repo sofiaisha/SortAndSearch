@@ -8,7 +8,10 @@ import java.util.ArrayList;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import com.mysortandsearch.Search;
+import com.mysortandsearch.BinarySearch;
+import com.mysortandsearch.ExchangeSort;
+import com.mysortandsearch.InsertionSort;
+import com.mysortandsearch.LinearSearch;
 import com.mysortandsearch.utils.ListGenerator;
 
 public class TestSearch {
@@ -22,25 +25,59 @@ public class TestSearch {
 
 	@Test
 	public void testLinearSearch() {
-		assertFalse(Search.linearSearch(null, 100));
+		list = lg.build(10000, 100000);
+		
+		assertFalse(LinearSearch.linearSearch(null, 100));
+		assertFalse(LinearSearch.linearSearch(list, null));
 
-		list = lg.build(10000, 1000);
 		for (int i = 0; i < list.size(); i++) {
 			int j = list.get(i);
-			assertTrue(Search.linearSearch(list, j));
+			assertTrue(LinearSearch.linearSearch(list, j));
 		}
-		assertFalse(Search.linearSearch(list, 1001));
+		assertFalse(LinearSearch.linearSearch(list, 1001));
 	}
 
 	@Test
 	public void testLinearSearchRecursive() {
-		assertFalse(Search.linearSearchRecursive(null, 100));
+		list = lg.build(10000, 100000);
+		
+		assertFalse(LinearSearch.linearSearchRecursive(null, 100));
+		assertFalse(LinearSearch.linearSearchRecursive(list, null));
 
-		list = lg.build(10000, 1000);
 		for (int i = 0; i < list.size(); i++) {
 			int j = list.get(i);
-			assertTrue(Search.linearSearchRecursive(list, j));
+			assertTrue(LinearSearch.linearSearchRecursive(list, j));
 		}
-		assertFalse(Search.linearSearch(list, 1001));
+		assertFalse(LinearSearch.linearSearch(list, 1001));
+	}
+	
+	@Test
+	public void testBinarySearch() {
+		list = lg.build(10000, 100000);
+		ExchangeSort.quickSort(list);
+				
+		assertFalse(BinarySearch.binarySearch(null, 100));
+		assertFalse(BinarySearch.binarySearch(list, null));
+
+		for (int i = 0; i < list.size(); i++) {
+			int j = list.get(i);
+			assertTrue(BinarySearch.binarySearch(list, j));
+		}
+		assertFalse(BinarySearch.binarySearch(list, 1001));
+	}
+	
+	@Test
+	public void testBinarySearchRecursive() {
+		list = lg.build(10000, 100000);
+		ExchangeSort.quickSort(list);
+				
+		assertFalse(BinarySearch.binarySearchRecursive(null, 100));
+		assertFalse(BinarySearch.binarySearchRecursive(list, null));
+
+		for (int i = 0; i < list.size(); i++) {
+			int j = list.get(i);
+			assertTrue(BinarySearch.binarySearchRecursive(list, j));
+		}
+		assertFalse(BinarySearch.binarySearchRecursive(list, 1001));
 	}
 }

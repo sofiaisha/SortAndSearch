@@ -2,12 +2,14 @@ package com.mysortandsearch;
 
 import java.util.List;
 
-public class Search<T> {
+public class LinearSearch<T> {
 
 	//
 	// Linear search
 	// Best case o(1), median case o(n), worst case o(n)
 	//
+
+	// TODO: add modes : move to front, move to back, move up
 	
 	// Iterative version
 	public static <T> boolean linearSearch(List<T> list, T t) {
