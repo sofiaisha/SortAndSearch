@@ -10,7 +10,6 @@ import org.junit.Test;
 
 import com.mysortandsearch.BinarySearch;
 import com.mysortandsearch.ExchangeSort;
-import com.mysortandsearch.InsertionSort;
 import com.mysortandsearch.LinearSearch;
 import com.mysortandsearch.utils.ListGenerator;
 
@@ -36,7 +35,7 @@ public class TestSearch {
 		}
 		assertFalse(LinearSearch.linearSearch(list, 1001));
 	}
-
+ 
 	@Test
 	public void testLinearSearchRecursive() {
 		list = lg.build(10000, 100000);

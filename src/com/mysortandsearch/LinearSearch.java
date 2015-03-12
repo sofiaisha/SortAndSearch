@@ -34,7 +34,7 @@ public class LinearSearch<T> {
 
 	private static <T> boolean linearSearchRecursive_internal(List<T> list,
 			T t, int index) {
-		if (index == list.size()) {
+		if (index >= list.size()) {
 			return false;
 		}
 		if (list.get(index).equals(t)) {

@@ -10,12 +10,13 @@ public class ExchangeSort<T> {
 	//
 	public static <T> void bubbleSort(List<T> list) {
 		boolean swap;
-		try {
-			do {
-				swap = false;
-				for (int i = 0; i < (list.size() - 1); i++) {
-					T left = list.get(i); 
-					T right = list.get(i + 1);
+
+		do {
+			swap = false;
+			for (int i = 0; i < (list.size() - 1); i++) {
+				T left = list.get(i);
+				T right = list.get(i + 1);
+				try {
 					@SuppressWarnings("unchecked")
 					Comparable<T> leftComp = (Comparable<T>) left;
 					if (leftComp.compareTo(right) > 0) {
@@ -23,11 +24,12 @@ public class ExchangeSort<T> {
 						list.set(i + 1, left);
 						swap = true;
 					}
+				} catch (ClassCastException e) {
+					e.printStackTrace();
 				}
-			} while (swap);
-		} catch (ClassCastException e) {
-			e.printStackTrace();
-		}
+			}
+		} while (swap);
+
 	}
 
 	//
@@ -37,8 +39,7 @@ public class ExchangeSort<T> {
 	public static <T> void quickSort(List<T> list) {
 		try {
 			ExchangeSort.quickSortInternal(list, 0, list.size() - 1);
-		}
-		catch (ClassCastException e) {
+		} catch (ClassCastException e) {
 			e.printStackTrace();
 		}
 	}
@@ -60,7 +61,7 @@ public class ExchangeSort<T> {
 			T currentElem = list.get(i);
 			T rightElem = list.get(right);
 			@SuppressWarnings("unchecked")
-			Comparable<T> currentElemComp = (Comparable<T>)currentElem;
+			Comparable<T> currentElemComp = (Comparable<T>) currentElem;
 			if (currentElemComp.compareTo(rightElem) <= 0) {
 				ExchangeSort.swap(list, i, store);
 				store++;

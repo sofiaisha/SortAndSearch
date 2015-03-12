@@ -10,7 +10,6 @@ public class BinarySearch<T extends Comparable<T>> {
 	
 	// Iterative version
 
-	@SuppressWarnings("unchecked")
 	public static <T> boolean binarySearch(List<T> list, T t) {
 		if ((list == null) || (t == null)) {
 			return false;
@@ -23,10 +22,16 @@ public class BinarySearch<T extends Comparable<T>> {
 			if (element.equals(t)) {
 				return true;
 			}
-			if (((Comparable<T>) t).compareTo(element) < 0) {
-				high = mid - 1;
-			} else {
-				low = mid + 1;
+			try {
+				@SuppressWarnings("unchecked")
+				Comparable<T> tComp = (Comparable<T>) t;
+				if (tComp.compareTo(element) < 0) {
+					high = mid - 1;
+				} else {
+					low = mid + 1;
+				}
+			} catch (ClassCastException e) {
+				e.printStackTrace();
 			}
 		}
 		return false;
@@ -41,7 +46,6 @@ public class BinarySearch<T extends Comparable<T>> {
 		return binarySearchRecursive_internal(list, t, 0, list.size()-1);
 	}
 	
-	@SuppressWarnings("unchecked")
 	public static <T> boolean binarySearchRecursive_internal(List<T> list, T t, int low, int high) {
 		if (low > high) {
 			return false;
@@ -51,10 +55,17 @@ public class BinarySearch<T extends Comparable<T>> {
 		if (element.equals(t)) {
 			return true;
 		}
-		if (((Comparable<T>) t).compareTo(element) < 0) {
-			return binarySearchRecursive_internal(list, t, low, mid-1);
-		} else {
-			return binarySearchRecursive_internal(list, t, mid+1, high);
+		try {
+			@SuppressWarnings("unchecked")
+			Comparable<T> tComp = (Comparable<T>) t;
+			if (tComp.compareTo(element) < 0) {
+				return binarySearchRecursive_internal(list, t, low, mid-1);
+			} else {
+				return binarySearchRecursive_internal(list, t, mid+1, high);
+			}
+		} catch (ClassCastException e) {
+			e.printStackTrace();
+			return false;
 		}
 	}
 }
