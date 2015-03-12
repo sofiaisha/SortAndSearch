@@ -2,27 +2,32 @@ package com.mysortandsearch;
 
 import java.util.List;
 
-public class ExchangeSort {
+public class ExchangeSort<T> {
 
 	//
 	// Bubble sort
 	// Best case o(n), median case o(n^2), worst case o(n^2)
 	//
-	@SuppressWarnings("unchecked")
 	public static <T> void bubbleSort(List<T> list) {
 		boolean swap;
-		do {
-			swap = false;
-			for (int i = 0; i < (list.size() - 1); i++) {
-				T left = list.get(i);
-				T right = list.get(i + 1);
-				if (((Comparable<T>) left).compareTo(right) > 0) {
-					list.set(i, right);
-					list.set(i + 1, left);
-					swap = true;
+		try {
+			do {
+				swap = false;
+				for (int i = 0; i < (list.size() - 1); i++) {
+					T left = list.get(i); 
+					T right = list.get(i + 1);
+					@SuppressWarnings("unchecked")
+					Comparable<T> leftComp = (Comparable<T>) left;
+					if (leftComp.compareTo(right) > 0) {
+						list.set(i, right);
+						list.set(i + 1, left);
+						swap = true;
+					}
 				}
-			}
-		} while (swap);
+			} while (swap);
+		} catch (ClassCastException e) {
+			e.printStackTrace();
+		}
 	}
 
 	//
@@ -30,7 +35,12 @@ public class ExchangeSort {
 	// Best case o(n log n), median case o(n log n), worst case o(n^2)
 	//
 	public static <T> void quickSort(List<T> list) {
-		ExchangeSort.quickSortInternal(list, 0, list.size() - 1);
+		try {
+			ExchangeSort.quickSortInternal(list, 0, list.size() - 1);
+		}
+		catch (ClassCastException e) {
+			e.printStackTrace();
+		}
 	}
 
 	private static <T> void quickSortInternal(List<T> list, int left, int right) {
@@ -41,7 +51,6 @@ public class ExchangeSort {
 		}
 	}
 
-	@SuppressWarnings("unchecked")
 	private static <T> int partition(List<T> list, int left, int right) {
 		int pivot = left;
 		ExchangeSort.swap(list, pivot, right);
@@ -50,7 +59,9 @@ public class ExchangeSort {
 		for (int i = left; i <= (right - 1); i++) {
 			T currentElem = list.get(i);
 			T rightElem = list.get(right);
-			if (((Comparable<T>) currentElem).compareTo(rightElem) <= 0) {
+			@SuppressWarnings("unchecked")
+			Comparable<T> currentElemComp = (Comparable<T>)currentElem;
+			if (currentElemComp.compareTo(rightElem) <= 0) {
 				ExchangeSort.swap(list, i, store);
 				store++;
 			}
