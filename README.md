@@ -14,7 +14,7 @@ Various sort and search algorithms for generic lists, implemented in Java.
   * <code>static \<T> List\<T> countSort(List\<T> list)</code>
   * <code>static \<T> bucketSort(List\<T> list)</code>
 
-<b>Search algorithms (com.mysortandsearch.sort)</b>
+<b>Search algorithms (com.mysortandsearch.search)</b>
 - <code>static \<T> boolean linearSearch(List\<T> list, T t)</code>
 - <code>static \<T> boolean linearSearch(List\<T> list, T t, LinearSearchMode mode)</code>
 - <code>static \<T> boolean linearSearchRecursive(List\<T> list, T t)</code>
