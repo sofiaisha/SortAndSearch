@@ -6,9 +6,9 @@ import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import com.mysortandsearch.ExchangeSort;
+import com.mysortandsearch.sort.ExchangeSort;
+import com.mysortandsearch.sort.utils.Sort;
 import com.mysortandsearch.utils.ListGenerator;
-import com.mysortandsearch.utils.Sort;
 
 public class TestExchangeSort {
 

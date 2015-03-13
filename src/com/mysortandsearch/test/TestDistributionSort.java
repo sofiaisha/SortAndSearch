@@ -7,11 +7,11 @@ import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import com.mysortandsearch.DistributionSort;
+import com.mysortandsearch.sort.DistributionSort;
+import com.mysortandsearch.sort.utils.Sort;
 import com.mysortandsearch.utils.HasAnIntegerKey;
 import com.mysortandsearch.utils.ListGenerator;
 import com.mysortandsearch.utils.MyInteger;
-import com.mysortandsearch.utils.Sort;
 
 
 class Dummy extends MyInteger implements HasAnIntegerKey {
