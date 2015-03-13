@@ -35,9 +35,9 @@ public class TestDistributionSort {
 	@Test
 	public void testCount() {
 		List<HasAnIntegerKey> listMyInts = TestDistributionSort.lg
-				.buildMyIntegerList2(100000, 100);
+				.buildMyIntegerList(100000, 1000);
 		List<HasAnIntegerKey> newlistMyInts = DistributionSort.countSort(listMyInts,
-				100);
+				1000);
 		Assert.assertTrue(Sort.isSorted(newlistMyInts));
 	}
 	
@@ -55,9 +55,9 @@ public class TestDistributionSort {
 
 	@Test
 	public void testBucket() {
-		ArrayList<MyInteger> listMyInts = TestDistributionSort.lg
-				.buildMyIntegerList(50, 10);
-		DistributionSort.bucketSort(listMyInts, 100000, 100);
+		ArrayList<HasAnIntegerKey> listMyInts = TestDistributionSort.lg
+				.buildMyIntegerList(100000, 1000);
+		DistributionSort.bucketSort(listMyInts, 100000, 1000);
 		Assert.assertTrue(Sort.isSorted(listMyInts));
 
 	}

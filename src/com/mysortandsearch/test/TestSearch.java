@@ -27,7 +27,7 @@ public class TestSearch {
 
 	@Test
 	public void testLinearSearch() {
-		list = lg.build(1000, 1000);
+		list = lg.build(10000, 100000);
 		
 		assertFalse(LinearSearch.linearSearch(null, 100));
 		assertFalse(LinearSearch.linearSearch(list, null));
@@ -36,12 +36,14 @@ public class TestSearch {
 			int j = list.get(i);
 			assertTrue(LinearSearch.linearSearch(list, j));
 		}
-		assertFalse(LinearSearch.linearSearch(list, 1001));
+		assertFalse(LinearSearch.linearSearch(list, 999999));
 	}
 
 	@Test
 	public void testLinearSearchNoMode() {
-		list = lg.build(1000, 1000);
+		list = lg.build(10000, 100000);
+		
+		assertEquals(LinearSearchModeFactory.build(4), null);
 
 		assertFalse(LinearSearch.linearSearch(null, 100, null));
 		assertFalse(LinearSearch.linearSearch(list, null, null));
@@ -50,12 +52,12 @@ public class TestSearch {
 			int j = list.get(i);
 			assertTrue(LinearSearch.linearSearch(list, j, null));
 		}
-		assertFalse(LinearSearch.linearSearch(list, 1001, null));
+		assertFalse(LinearSearch.linearSearch(list, 999999, null));
 	}
 
 	@Test
 	public void testLinearSearchMoveFirst() {
-		list = lg.build(1000, 1000);
+		list = lg.buildUnique(10000, 100000);
 		LinearSearchMode<Integer> mode = LinearSearchModeFactory
 				.build(LinearSearchModeFactory.modeMoveFirst);
 
@@ -67,7 +69,7 @@ public class TestSearch {
 		for (int i = 0; i < list.size(); i++) {
 			int j = list.get(i);
 			assertTrue(LinearSearch.linearSearch(list, j, mode));
-		}
+		} 
 		// Test first element
 		int element = list.get(0);
 		assertTrue(LinearSearch.linearSearch(list, element, mode));
@@ -84,12 +86,12 @@ public class TestSearch {
 		assertEquals(list.get(0), (Integer) element);
 		assertEquals(list.size(), size);
 		// Test missing element
-		assertFalse(LinearSearch.linearSearch(list, 1001, mode));
+		assertFalse(LinearSearch.linearSearch(list, 999999, mode));
 	}
 
 	@Test
 	public void testLinearSearchMoveLast() {
-		list = lg.build(1000, 1000);
+		list = lg.buildUnique(10000, 100000);
 		LinearSearchMode<Integer> mode = LinearSearchModeFactory
 				.build(LinearSearchModeFactory.modeMoveLast);
 
@@ -119,12 +121,12 @@ public class TestSearch {
 		assertEquals(list.get(list.size() - 1), (Integer) element);
 		assertEquals(list.size(), size);
 		// Test missing element
-		assertFalse(LinearSearch.linearSearch(list, 1001, mode));
+		assertFalse(LinearSearch.linearSearch(list, 999999, mode));
 	}
 
 	@Test
 	public void testLinearSearchMoveUp() {
-		list = lg.build(10, 100);
+		list = lg.buildUnique(10000, 100000);
 		LinearSearchMode<Integer> mode = LinearSearchModeFactory
 				.build(LinearSearchModeFactory.modeMoveUp);
 
@@ -157,21 +159,20 @@ public class TestSearch {
 		assertEquals(list.size(), size);
 
 		// Test last element
-		index = list.size() - 1;
-		element = list.get(index);
-		previous = list.get(index - 1);
+		size = list.size();
+		element = list.get(size-1);
+		previous = list.get(size-2);
 		LinearSearch.linearSearch(list, element, mode);
-
-		assertEquals(list.get(index - 1), (Integer) element);
-		assertEquals(list.get(index), (Integer) previous);
+		assertEquals(list.get(size - 1), (Integer)previous);
+		assertEquals(list.get(size - 2), (Integer)element);
 		assertEquals(list.size(), size);
 
-		assertFalse(LinearSearch.linearSearch(list, 1001, mode));
+		assertFalse(LinearSearch.linearSearch(list, 999999, mode));
 	}
 
 	@Test
 	public void testLinearSearchRecursive() {
-		list = lg.build(10000, 100000);
+		list = lg.buildUnique(10000, 100000);
 
 		assertFalse(LinearSearch.linearSearchRecursive(null, 100));
 		assertFalse(LinearSearch.linearSearchRecursive(list, null));
@@ -180,12 +181,12 @@ public class TestSearch {
 			int j = list.get(i);
 			assertTrue(LinearSearch.linearSearchRecursive(list, j));
 		}
-		assertFalse(LinearSearch.linearSearch(list, 1001));
+		assertFalse(LinearSearch.linearSearch(list, 999999));
 	}
 
 	@Test
 	public void testBinarySearch() {
-		list = lg.build(10000, 100000);
+		list = lg.buildUnique(10000, 100000);
 		ExchangeSort.quickSort(list);
 
 		assertFalse(BinarySearch.binarySearch(null, 100));
@@ -195,12 +196,12 @@ public class TestSearch {
 			int j = list.get(i);
 			assertTrue(BinarySearch.binarySearch(list, j));
 		}
-		assertFalse(BinarySearch.binarySearch(list, 1001));
+		assertFalse(BinarySearch.binarySearch(list, 999999));
 	}
 
 	@Test
 	public void testBinarySearchRecursive() {
-		list = lg.build(1000, 1000);
+		list = lg.buildUnique(10000, 100000);
 		ExchangeSort.quickSort(list);
 
 		assertFalse(BinarySearch.binarySearchRecursive(null, 100));
@@ -210,6 +211,6 @@ public class TestSearch {
 			int j = list.get(i);
 			assertTrue(BinarySearch.binarySearchRecursive(list, j));
 		}
-		assertFalse(BinarySearch.binarySearchRecursive(list, 1001));
+		assertFalse(BinarySearch.binarySearchRecursive(list, 999999));
 	}
 }
