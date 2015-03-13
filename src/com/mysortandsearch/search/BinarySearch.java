@@ -1,4 +1,4 @@
-package com.mysortandsearch;
+package com.mysortandsearch.search;
 
 import java.util.List;
 

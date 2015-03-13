@@ -1,6 +1,8 @@
-package com.mysortandsearch;
+package com.mysortandsearch.search;
 
 import java.util.List;
+
+import com.mysortandsearch.search.utils.LinearSearchMode;
 
 public class LinearSearch<T> {
 
@@ -8,16 +10,23 @@ public class LinearSearch<T> {
 	// Linear search
 	// Best case o(1), median case o(n), worst case o(n)
 	//
-
-	// TODO: add modes : move to front, move to back, move up
 	
 	// Iterative version
 	public static <T> boolean linearSearch(List<T> list, T t) {
-		if ((list == null) || (t == null)) {
+		return linearSearch(list, t, null);
+	}
+	
+	// Iterative version with mode (move to front, move to back, move up)
+	public static <T> boolean linearSearch(List<T> list, T t, LinearSearchMode<T> mode) {
+		if ((list == null) || (t == null) ) {
 			return false;
 		}
-		for (T element : list) {
-			if (element.equals(t)) {
+		for (int i=0;i<list.size();i++) {
+			T current = list.get(i);
+			if (current.equals(t)) {
+				if (mode != null) {
+					mode.moveElement(list, i);
+				}
 				return true;
 			}
 		}

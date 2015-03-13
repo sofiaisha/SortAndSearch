@@ -1,10 +1,10 @@
-package com.mysortandsearch;
+package com.mysortandsearch.sort;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import com.mysortandsearch.sort.utils.MyHashTable;
 import com.mysortandsearch.utils.HasAnIntegerKey;
-import com.mysortandsearch.utils.MyHashTable;
 
 public class DistributionSort<T extends HasAnIntegerKey> {
 
