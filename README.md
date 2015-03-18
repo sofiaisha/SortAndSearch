@@ -18,6 +18,7 @@ Various sort and search algorithms for generic lists, implemented in Java.
 - <code>static \<T> boolean linearSearch(List\<T> list, T t)</code>
 - <code>static \<T> boolean linearSearch(List\<T> list, T t, LinearSearchMode mode)</code>
 - <code>static \<T> boolean linearSearchRecursive(List\<T> list, T t)</code>
+- <code>static \<T> boolean binarySearch(List\<T> list, T t)</code>
 
 <b>Utility classes (com.mysortandsearch.utils)</b>
 - <code>ListGenerator</code>: generate random lists of Integers.
