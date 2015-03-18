@@ -4,6 +4,7 @@ import java.util.List;
 
 // Implementation of the Strategy pattern for search modes used in LinearSearch.linearSearch()
 
+@FunctionalInterface
 public interface LinearSearchMode<T> {
 	public void moveElement(List<T> list, int index);
 }
@@ -48,5 +49,7 @@ class LinearSearchModeMoveUp<T> implements LinearSearchMode<T> {
 			list.set(index, previous);
 		}
 	}
-
 }
+
+
+

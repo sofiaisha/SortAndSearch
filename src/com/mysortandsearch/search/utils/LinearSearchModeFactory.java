@@ -10,11 +10,11 @@ public class LinearSearchModeFactory<T> {
 
 	public static <T> LinearSearchMode<T> build(int mode) {
 		switch (mode) {
-		case 1:
+		case modeMoveFirst:
 			return new LinearSearchModeMoveFirst<T>();
-		case 2:
+		case modeMoveLast:
 			return new LinearSearchModeMoveLast<T>();
-		case 3:
+		case modeMoveUp:
 			return new LinearSearchModeMoveUp<T>();
 		default:
 			return null;

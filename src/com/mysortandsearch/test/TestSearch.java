@@ -64,31 +64,40 @@ public class TestSearch {
 		assertFalse(LinearSearch.linearSearch(null, 100, null));
 		assertFalse(LinearSearch.linearSearch(list, null, null));
 
+		assertFalse(LinearSearch.linearSearchMoveFirst(null, 100));
+		assertFalse(LinearSearch.linearSearchMoveFirst(list, null));
+		
 		int size = list.size();
 
 		for (int i = 0; i < list.size(); i++) {
 			int j = list.get(i);
 			assertTrue(LinearSearch.linearSearch(list, j, mode));
+			assertTrue(LinearSearch.linearSearchMoveFirst(list, j));
+
 		} 
 		// Test first element
 		int element = list.get(0);
 		assertTrue(LinearSearch.linearSearch(list, element, mode));
+		assertTrue(LinearSearch.linearSearchMoveFirst(list, element));
 		assertEquals(list.get(0), (Integer) element);
 		assertEquals(list.size(), size);
 		// Test element in the middle of the list
 		element = list.get(list.size() / 2);
 		assertTrue(LinearSearch.linearSearch(list, element, mode));
+		assertTrue(LinearSearch.linearSearchMoveFirst(list, element));
 		assertEquals(list.get(0), (Integer) element);
 		assertEquals(list.size(), size);
 		// Test last element
 		element = list.get(list.size() - 1);
 		assertTrue(LinearSearch.linearSearch(list, element, mode));
+		assertTrue(LinearSearch.linearSearchMoveFirst(list, element));
 		assertEquals(list.get(0), (Integer) element);
 		assertEquals(list.size(), size);
 		// Test missing element
 		assertFalse(LinearSearch.linearSearch(list, 999999, mode));
+		assertFalse(LinearSearch.linearSearchMoveFirst(list, 999999));
 	}
-
+	
 	@Test
 	public void testLinearSearchMoveLast() {
 		list = lg.buildUnique(10000, 100000);
@@ -97,31 +106,39 @@ public class TestSearch {
 
 		assertFalse(LinearSearch.linearSearch(null, 100, null));
 		assertFalse(LinearSearch.linearSearch(list, null, null));
+		
+		assertFalse(LinearSearch.linearSearchMoveLast(null, 100));
+		assertFalse(LinearSearch.linearSearchMoveLast(list, null));
 
 		int size = list.size();
 
 		for (int i = 0; i < list.size(); i++) {
 			int j = list.get(i);
 			assertTrue(LinearSearch.linearSearch(list, j, mode));
+			assertTrue(LinearSearch.linearSearchMoveLast(list, j));
 		}
 
 		// Test first element
 		int element = list.get(0);
 		assertTrue(LinearSearch.linearSearch(list, element, mode));
+		assertTrue(LinearSearch.linearSearchMoveLast(list, element));
 		assertEquals(list.get(list.size() - 1), (Integer) element);
 		assertEquals(list.size(), size);
 		// Test element in the middle of the list
 		element = list.get(list.size() / 2);
 		assertTrue(LinearSearch.linearSearch(list, element, mode));
+		assertTrue(LinearSearch.linearSearchMoveLast(list, element));
 		assertEquals(list.get(list.size() - 1), (Integer) element);
 		assertEquals(list.size(), size);
 		// Test last element
 		element = list.get(list.size() - 1);
 		assertTrue(LinearSearch.linearSearch(list, element, mode));
+		assertTrue(LinearSearch.linearSearchMoveLast(list, element));
 		assertEquals(list.get(list.size() - 1), (Integer) element);
 		assertEquals(list.size(), size);
 		// Test missing element
 		assertFalse(LinearSearch.linearSearch(list, 999999, mode));
+		assertFalse(LinearSearch.linearSearchMoveLast(list, 999999));
 	}
 
 	@Test
@@ -132,12 +149,15 @@ public class TestSearch {
 
 		assertFalse(LinearSearch.linearSearch(null, 100, null));
 		assertFalse(LinearSearch.linearSearch(list, null, null));
+		assertFalse(LinearSearch.linearSearchMoveUp(null, 100));
+		assertFalse(LinearSearch.linearSearchMoveUp(list, null));
 
 		int size = list.size();
 
 		for (int i = 0; i < list.size(); i++) {
 			int j = list.get(i);
 			assertTrue(LinearSearch.linearSearch(list, j, mode));
+			assertTrue(LinearSearch.linearSearchMoveUp(list, j));
 		}
 
 		// Test first element
@@ -145,6 +165,7 @@ public class TestSearch {
 		int element = list.get(0);
 		int next = list.get(1);
 		assertTrue(LinearSearch.linearSearch(list, element, mode));
+		assertTrue(LinearSearch.linearSearchMoveUp(list, element));
 		assertEquals(list.get(0), (Integer) element);
 		assertEquals(list.get(1), (Integer) next);
 		assertEquals(list.size(), size);
@@ -156,6 +177,12 @@ public class TestSearch {
 		assertTrue(LinearSearch.linearSearch(list, element, mode));
 		assertEquals(list.get(index - 1), (Integer) element);
 		assertEquals(list.get(index), (Integer) previous);
+		
+		previous = list.get(index-2);
+		assertTrue(LinearSearch.linearSearchMoveUp(list, element));
+		assertEquals(list.get(index - 2), (Integer) element);
+		assertEquals(list.get(index - 1), (Integer) previous);
+		
 		assertEquals(list.size(), size);
 
 		// Test last element
@@ -165,9 +192,17 @@ public class TestSearch {
 		LinearSearch.linearSearch(list, element, mode);
 		assertEquals(list.get(size - 1), (Integer)previous);
 		assertEquals(list.get(size - 2), (Integer)element);
+		
+		element = list.get(size-1);
+		previous = list.get(size-2);		
+		LinearSearch.linearSearchMoveUp(list, element);
+		assertEquals(list.get(size - 1), (Integer)previous);
+		assertEquals(list.get(size - 2), (Integer)element);
+
 		assertEquals(list.size(), size);
 
 		assertFalse(LinearSearch.linearSearch(list, 999999, mode));
+		assertFalse(LinearSearch.linearSearchMoveUp(list, 999999));
 	}
 
 	@Test
