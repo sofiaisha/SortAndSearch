@@ -47,10 +47,9 @@ public class DistributionSort<T extends HasAnIntegerKey> {
 	// Bucket sort
 	// Best case o(n), median case o(n), worst case o(n)
 	//
-	@SuppressWarnings("unchecked")
 	public static <T extends HasAnIntegerKey> void bucketSort(List<T> list,
 			int nbElements, int maxValue) {
-		MyHashTable<HasAnIntegerKey> ht = new MyHashTable<>(nbElements,
+		MyHashTable<T> ht = new MyHashTable<>(nbElements,
 				maxValue);
 		// Hash all elements on their key
 		for (int i = 0; i < list.size(); i++) {
@@ -59,11 +58,11 @@ public class DistributionSort<T extends HasAnIntegerKey> {
 		// Sort each bucket
 		int index = 0;
 		for (int i = 0; i < ht.getNbBuckets(); i++) {
-			ArrayList<HasAnIntegerKey> bucket = ht.getBucket(i);
+			ArrayList<T> bucket = ht.getBucket(i);
 			InsertionSort.insertionSort(bucket);
 			// Add each sorted bucket to the list
 			for (int j = 0; j < bucket.size(); j++) {
-				list.set(index + j, (T) bucket.get(j));
+				list.set(index + j, bucket.get(j));
 			}
 			index += bucket.size();
 		}
