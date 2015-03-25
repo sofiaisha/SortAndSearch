@@ -15,13 +15,13 @@ public class InsertionSort<T> {
 		}
 	}
 
+	@SuppressWarnings("unchecked")
 	private static <T> void insert(List<T> list, int index, T element) {
 		int position = index - 1;
 		// For each element, start from its original position, move larger
 		// neighbors to the right
-		@SuppressWarnings("unchecked")
-		Comparable<T> comparable = (Comparable<T>) list.get(position);
-		while ((position >= 0) && (comparable.compareTo(element) > 0)) {
+		while ((position >= 0)
+				&& (((Comparable<T>) list.get(position)).compareTo(element) > 0)) {
 			list.set(position + 1, list.get(position));
 			position--;
 		}
