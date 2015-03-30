@@ -1,5 +1,6 @@
 package com.mysortandsearch.search.utils;
 
+import java.util.Collections;
 import java.util.List;
 
 // Implementation of the Strategy pattern for search modes used in LinearSearch.linearSearch()
@@ -42,11 +43,7 @@ class LinearSearchModeMoveUp<T> implements LinearSearchMode<T> {
 		assert ((index >= 0) && (index < list.size()));
 		// Move element up, unless it's already at the front of the list
 		if (index != 0) {
-			// TODO: slow, need to do better
-			T current = list.get(index);
-			T previous = list.get(index - 1);
-			list.set(index - 1, current);
-			list.set(index, previous);
+			Collections.swap(list, index-1, index);
 		}
 	}
 }

@@ -1,5 +1,6 @@
 package com.mysortandsearch.search;
 
+import java.util.Collections;
 import java.util.List;
 
 import com.mysortandsearch.search.utils.LinearSearchMode;
@@ -61,10 +62,7 @@ public class LinearSearch<T> {
 	public static <T> boolean linearSearchMoveUp(List<T> list, T t) {
 		return linearSearch(list, t, ((List<T> l, int index) -> {
 			if (index != 0) {
-				T current = list.get(index);
-				T previous = list.get(index - 1);
-				list.set(index - 1, current);
-				list.set(index, previous);
+				Collections.swap(list, index-1, index);
 			}
 		}));
 	}
