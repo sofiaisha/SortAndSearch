@@ -15,6 +15,7 @@ import com.mysortandsearch.utils.MyInteger;
 
 
 class Dummy extends MyInteger implements HasAnIntegerKey {
+	@SuppressWarnings("unused")
 	private String s;
 
 	Dummy(int i, String s) {
